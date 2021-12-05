@@ -24,16 +24,12 @@
 
 package net.thesimpleteam.simplebotplugin.event;
 
-import net.thesimpleteam.simplebotplugin.BasePlugin;
-
-public abstract class MessageReceiveEvent implements Event {
+public abstract class MessageReceiveEvent extends Event {
 
     private final String message;
-    private final BasePlugin plugin;
 
-    protected MessageReceiveEvent(String message, BasePlugin plugin) {
+    protected MessageReceiveEvent(String message) {
         this.message = message;
-        this.plugin = plugin;
     }
 
     public abstract void reply(String text);
@@ -42,7 +38,4 @@ public abstract class MessageReceiveEvent implements Event {
         return message;
     }
 
-    public BasePlugin getPlugin() {
-        return plugin;
-    }
 }

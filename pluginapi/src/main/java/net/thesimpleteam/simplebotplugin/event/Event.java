@@ -24,4 +24,13 @@
 
 package net.thesimpleteam.simplebotplugin.event;
 
-public interface Event {}
+import net.thesimpleteam.simplebotplugin.BasePlugin;
+
+public abstract class Event {
+
+    private BasePlugin plugin;
+
+    public BasePlugin getPlugin() {
+        return plugin;
+    }
+}
