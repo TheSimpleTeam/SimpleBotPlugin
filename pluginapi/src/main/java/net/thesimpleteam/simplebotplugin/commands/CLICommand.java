@@ -22,15 +22,23 @@
  * SOFTWARE.
  */
 
-package net.thesimpleteam.simplebotplugin;
+package net.thesimpleteam.simplebotplugin.commands;
 
-import net.thesimpleteam.simplebotplugin.commands.CLICommand;
-import net.thesimpleteam.simplebotplugin.event.Event;
-import net.thesimpleteam.simplebotplugin.listener.Listener;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public interface IPluginLoader {
+public interface CLICommand {
 
-    void callEvent(Event event);
-    void addListener(BasePlugin plugin, Listener... listeners);
-    void addCLICommand(CLICommand... commands);
+    @NotNull
+    String name();
+
+    default String[] aliases() {
+        return new String[]{name()};
+    }
+
+    @Nullable
+    String help();
+
+    void execute(CommandEvent event);
+
 }

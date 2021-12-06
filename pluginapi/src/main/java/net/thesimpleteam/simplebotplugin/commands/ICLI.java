@@ -22,15 +22,16 @@
  * SOFTWARE.
  */
 
-package net.thesimpleteam.simplebotplugin;
+package net.thesimpleteam.simplebotplugin.commands;
 
-import net.thesimpleteam.simplebotplugin.commands.CLICommand;
-import net.thesimpleteam.simplebotplugin.event.Event;
-import net.thesimpleteam.simplebotplugin.listener.Listener;
+import com.google.common.collect.ImmutableList;
 
-public interface IPluginLoader {
+import java.io.IOException;
+import java.util.List;
 
-    void callEvent(Event event);
-    void addListener(BasePlugin plugin, Listener... listeners);
-    void addCLICommand(CLICommand... commands);
+public interface ICLI {
+
+    void commandsListener() throws InterruptedException, IOException;
+    ImmutableList<CLICommand> getCommands();
+    List<CLICommand> getPluginCommands();
 }

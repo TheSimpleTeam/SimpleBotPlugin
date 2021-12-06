@@ -8,7 +8,15 @@ public class ExampleListener implements Listener {
 
     @EventHandler
     public void onMessageReceived(MessageReceiveEvent event) {
-        event.reply("Hello World from " + event.getPlugin().getName() + " !");
+        if(event.getMessage().startsWith("!!")) {
+            String commandName = event.getMessage().substring(2);
+            switch (commandName) {
+                case "ping" -> event.reply("Pong from " + event.getPlugin().getName() + " !");
+                case "plugin" -> event.reply("Plugin name: " + event.getPlugin().getName());
+                sun.misc.Unsafe
+                default -> event.reply("Unknown command " + commandName);
+            }
+        }
     }
 
 }

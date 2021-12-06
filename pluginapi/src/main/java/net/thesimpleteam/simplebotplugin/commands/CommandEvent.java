@@ -22,15 +22,6 @@
  * SOFTWARE.
  */
 
-package net.thesimpleteam.simplebotplugin;
+package net.thesimpleteam.simplebotplugin.commands;
 
-import net.thesimpleteam.simplebotplugin.commands.CLICommand;
-import net.thesimpleteam.simplebotplugin.event.Event;
-import net.thesimpleteam.simplebotplugin.listener.Listener;
-
-public interface IPluginLoader {
-
-    void callEvent(Event event);
-    void addListener(BasePlugin plugin, Listener... listeners);
-    void addCLICommand(CLICommand... commands);
-}
+public record CommandEvent(String[] args, ICLI cli) {}
