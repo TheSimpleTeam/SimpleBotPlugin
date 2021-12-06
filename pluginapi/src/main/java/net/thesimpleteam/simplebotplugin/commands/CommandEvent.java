@@ -24,4 +24,66 @@
 
 package net.thesimpleteam.simplebotplugin.commands;
 
-public record CommandEvent(String[] args, ICLI cli) {}
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.thesimpleteam.simplebotplugin.BasePlugin;
+
+import javax.annotation.Nonnull;
+
+public class CommandEvent {
+    private final JDA jda;
+    private final String authorName;
+    private final String[] args;
+    private final String authorId;
+    private final String channelId;
+    private final String guildId;
+    private final BasePlugin plugin;
+
+    public CommandEvent(String[] args, String authorName, String authorId, String channelId, String guildId, JDA jda, BasePlugin plugin) {
+        this.args = args;
+        this.authorName = authorName;
+        this.authorId = authorId;
+        this.channelId = channelId;
+        this.guildId = guildId;
+        this.jda = jda;
+        this.plugin = plugin;
+    }
+
+    public CommandEvent(String[] args, GuildMessageReceivedEvent event, BasePlugin plugin) {
+        this.args = args;
+        this.authorName = event.getAuthor().getName();
+        this.authorId = event.getAuthor().getId();
+        this.channelId = event.getChannel().getId();
+        this.guildId = event.getGuild().getId();
+        this.jda = event.getJDA();
+        this.plugin = plugin;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public String[] getArgs() {
+        return args;
+    }
+
+    public String getAuthorId() {
+        return authorId;
+    }
+
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public String getGuildId() {
+        return guildId;
+    }
+
+    public BasePlugin getPlugin() {
+        return plugin;
+    }
+
+    public void reply(@Nonnull String message) {
+        jda.getTextChannelById(channelId).sendMessage(message).queue();
+    }
+}

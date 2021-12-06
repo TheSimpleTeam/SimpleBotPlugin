@@ -24,21 +24,4 @@
 
 package net.thesimpleteam.simplebotplugin.commands;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-public interface CLICommand {
-
-    @NotNull
-    String name();
-
-    default String[] aliases() {
-        return new String[]{name()};
-    }
-
-    @Nullable
-    String help();
-
-    void execute(CLICommandEvent event);
-
-}
+public record CLICommandEvent(String[] args, ICLI cli) {}

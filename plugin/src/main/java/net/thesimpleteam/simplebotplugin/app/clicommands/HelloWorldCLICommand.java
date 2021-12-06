@@ -1,7 +1,7 @@
 package net.thesimpleteam.simplebotplugin.app.clicommands;
 
 import net.thesimpleteam.simplebotplugin.commands.CLICommand;
-import net.thesimpleteam.simplebotplugin.commands.CommandEvent;
+import net.thesimpleteam.simplebotplugin.commands.CLICommandEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,7 +18,7 @@ public class HelloWorldCLICommand implements CLICommand {
     }
 
     @Override
-    public void execute(CommandEvent event) {
+    public void execute(CLICommandEvent event) {
         System.out.println("Hello World!");
     }
 }

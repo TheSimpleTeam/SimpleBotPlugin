@@ -25,6 +25,7 @@
 package net.thesimpleteam.simplebotplugin;
 
 import net.thesimpleteam.simplebotplugin.commands.CLICommand;
+import net.thesimpleteam.simplebotplugin.commands.Command;
 import net.thesimpleteam.simplebotplugin.event.Event;
 import net.thesimpleteam.simplebotplugin.listener.Listener;
 
@@ -33,4 +34,5 @@ public interface IPluginLoader {
     void callEvent(Event event);
     void addListener(BasePlugin plugin, Listener... listeners);
     void addCLICommand(CLICommand... commands);
+    void addCommands(BasePlugin plugin, Command... commands);
 }

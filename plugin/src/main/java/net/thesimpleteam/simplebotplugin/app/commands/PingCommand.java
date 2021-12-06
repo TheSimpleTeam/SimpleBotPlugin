@@ -22,23 +22,27 @@
  * SOFTWARE.
  */
 
-package net.thesimpleteam.simplebotplugin.commands;
+package net.thesimpleteam.simplebotplugin.app.commands;
 
+import net.thesimpleteam.simplebotplugin.commands.Command;
+import net.thesimpleteam.simplebotplugin.commands.CommandEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface CLICommand {
+public class PingCommand implements Command {
 
-    @NotNull
-    String name();
-
-    default String[] aliases() {
-        return new String[]{name()};
+    @Override
+    public @NotNull String name() {
+        return "ping";
     }
 
-    @Nullable
-    String help();
+    @Override
+    public @Nullable String help() {
+        return null;
+    }
 
-    void execute(CLICommandEvent event);
-
+    @Override
+    public void execute(CommandEvent event) {
+        event.reply("Pong from " + event.getPlugin().getName() + " !");
+    }
 }

@@ -5,6 +5,7 @@ package net.thesimpleteam.simplebotplugin.app;
 
 import net.thesimpleteam.simplebotplugin.BasePlugin;
 import net.thesimpleteam.simplebotplugin.app.clicommands.HelloWorldCLICommand;
+import net.thesimpleteam.simplebotplugin.app.commands.PingCommand;
 import net.thesimpleteam.simplebotplugin.app.listener.ExampleListener;
 
 public class App extends BasePlugin {
@@ -25,6 +26,7 @@ public class App extends BasePlugin {
         System.out.println("This plugin is made by " + this.getAuthor());
         getLoader().addListener(this, new ExampleListener());
         getLoader().addCLICommand(new HelloWorldCLICommand());
+        getLoader().addCommands(this, new PingCommand());
     }
 
     @Override

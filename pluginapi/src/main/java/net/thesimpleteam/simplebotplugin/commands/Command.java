@@ -27,7 +27,7 @@ package net.thesimpleteam.simplebotplugin.commands;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface CLICommand {
+public interface Command {
 
     @NotNull
     String name();
@@ -39,6 +39,6 @@ public interface CLICommand {
     @Nullable
     String help();
 
-    void execute(CLICommandEvent event);
+    void execute(CommandEvent event);
 
 }
