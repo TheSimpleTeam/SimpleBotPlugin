@@ -13,7 +13,6 @@ public class ExampleListener implements Listener {
             switch (commandName) {
                 case "ping" -> event.reply("Pong from " + event.getPlugin().getName() + " !");
                 case "plugin" -> event.reply("Plugin name: " + event.getPlugin().getName());
-                sun.misc.Unsafe
                 default -> event.reply("Unknown command " + commandName);
             }
         }
